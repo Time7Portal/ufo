@@ -1,2 +1,9 @@
 ﻿  Main.cpp
-  UFO_PROJECT.vcxproj -> D:\Downloads\Program Sources\ufo\UFO_PROJECT\Win32\Debug\UFO_PROJECT.exe
+C:\Users\dhfla\Desktop\ufo\UFO_PROJECT\UFO_PROJECT\Sources\Main.cpp(72,51): warning C4244: '인수': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\dhfla\Desktop\ufo\UFO_PROJECT\UFO_PROJECT\Sources\Main.cpp(72,23): warning C4244: '인수': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\dhfla\Desktop\ufo\UFO_PROJECT\UFO_PROJECT\Sources\Main.cpp(73,80): warning C4244: '인수': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\dhfla\Desktop\ufo\UFO_PROJECT\UFO_PROJECT\Sources\Main.cpp(73,45): warning C4244: '인수': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\dhfla\Desktop\ufo\UFO_PROJECT\UFO_PROJECT\Sources\Main.cpp(74,80): warning C4244: '인수': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\dhfla\Desktop\ufo\UFO_PROJECT\UFO_PROJECT\Sources\Main.cpp(74,44): warning C4244: '인수': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+LINK : warning LNK4098: 'MSVCRT' defaultlib가 다른 라이브러리와 충돌합니다. /NODEFAULTLIB:library를 사용하십시오.
+  UFO_PROJECT.vcxproj -> C:\Users\dhfla\Desktop\ufo\UFO_PROJECT\Win32\Debug\UFO_PROJECT.exe
