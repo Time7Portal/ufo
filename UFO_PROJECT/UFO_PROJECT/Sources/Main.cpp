@@ -1,11 +1,23 @@
 #define PI 3.14159
+#define WINDOW_SIZE 600
+
 
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
 #include <chrono>
+#include <unordered_map>
 #include <GLFW/glfw3.h>
 #include <windows.h>
+#include "InputManager.h"
+
+
+
+// 현재 캐릭터의 위치, 크기 저장용
+double xPosCharacter = 0;
+double yPosCharacter = 0;
+double sizeC = 1;
+
 
 
 int main(void)
@@ -19,7 +31,7 @@ int main(void)
     }
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(600, 600, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(WINDOW_SIZE, WINDOW_SIZE, "Hello World", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -28,6 +40,13 @@ int main(void)
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
+
+
+
+    // 키보드와 마우스 처리를 위한 객체 생성
+    InputManager inputManager(window);
+
+
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
@@ -38,6 +57,37 @@ int main(void)
         auto millis = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
         //std::cout << millis << std::endl;
 
+
+        // 키 입력에 따른 이동
+        if (inputManager.Get_KeyPressedCheck(GLFW_KEY_D) == TRUE)
+        {
+            xPosCharacter += 0.05;
+        }
+        if (inputManager.Get_KeyPressedCheck(GLFW_KEY_A) == TRUE)
+        {
+            xPosCharacter -= 0.05;
+        }
+        if (inputManager.Get_KeyPressedCheck(GLFW_KEY_W) == TRUE)
+        {
+            yPosCharacter += 0.05;
+        }
+        if (inputManager.Get_KeyPressedCheck(GLFW_KEY_S) == TRUE)
+        {
+            yPosCharacter -= 0.05;
+        }
+        if (inputManager.Get_KeyPressedCheck(GLFW_KEY_E) == TRUE)
+        {
+            sizeC += 0.03;
+        }
+        if (inputManager.Get_KeyPressedCheck(GLFW_KEY_Q) == TRUE)
+        {
+            sizeC -= 0.03;
+        }
+
+        // 마우스 위치 출력 (테스트)
+        //std::cout << inputManager.Get_ReletiveMousePosX() << " / " << inputManager.Get_ReletiveMousePosY() << std::endl;
+
+
         // 회전 속도 (값이 높을수록 느림)
         long long speed = 10.0;
         long long ticktock = millis / speed;
@@ -46,29 +96,22 @@ int main(void)
         glClear(GL_COLOR_BUFFER_BIT);
 
 
-        glBegin(GL_TRIANGLES);                      // Drawing Using Triangles
+        // 삼각형 그리기
+        glBegin(GL_TRIANGLES);      // Drawing Using Triangles
         static double cost;         cost = cos(ticktock * PI / 180);
         static double sint;         sint = sin(ticktock * PI / 180);
 
-
-        std::cout << &cost << " = " << cost << std::endl;
-        std::cout << &sint << " = " << sint << std::endl;
-
-        glVertex3f(-1.0 * sint, +1.0 * cost, 0.0); // Top
-        glVertex3f(-1.0 * cost + 1.0 * sint, -1.0 * sint - 1.0 * cost, 0.0); // Bottom Left
-        glVertex3f(1.0 * cost + 1.0 * sint, 1.0 * sint - 1.0 * cost, 0.0); // Bottom Right
+        glVertex3f( (-sizeC * sint) + xPosCharacter,                    (+sizeC * cost) + yPosCharacter,                    0.0 ); // Top
+        glVertex3f( (-sizeC * cost + sizeC * sint) + xPosCharacter,     (-sizeC * sint - sizeC * cost) + yPosCharacter,     0.0 ); // Bottom Left
+        glVertex3f( (sizeC * cost + sizeC * sint) + xPosCharacter,      (sizeC * sint - sizeC * cost) + yPosCharacter,      0.0 ); // Bottom Right
 
 
-        //glVertex3f(0.0f, 1.0f, 0.0f);              // Top
-        //glVertex3f(-1.0f, -1.0f, 0.0f);              // Bottom Left
-        //glVertex3f(1.0f, -1.0f, 0.0f);              // Bottom Right
-        //glVertex3f(0.0 * cos(ticktock * PI / 180) - 1.0 * sin(ticktock * PI / 180), 0.0 * sin(ticktock * PI / 180) + 1.0 * cos(ticktock * PI / 180), 0.0f); // Top
-        //glVertex3f(-1.0 * cos(ticktock * PI / 180) + 1.0 * sin(ticktock * PI / 180), -1.0 * sin(ticktock * PI / 180) - 1.0 * cos(ticktock * PI / 180), 0.0f); // Bottom Left
-        //glVertex3f(1.0 * cos(ticktock * PI / 180) + 1.0 * sin(ticktock * PI / 180), 1.0 * sin(ticktock * PI / 180) - 1.0 * cos(ticktock * PI / 180), 0.0f); // Bottom Right
 
 
-        glEnd();                            // Finished Drawing The Triangle
 
+
+        // Finished Drawing The Triangle
+        glEnd();
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
@@ -83,3 +126,5 @@ int main(void)
     glfwTerminate();
     return 0;
 }
+
+
