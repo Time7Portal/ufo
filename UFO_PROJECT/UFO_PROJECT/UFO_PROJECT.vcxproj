@@ -157,16 +157,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <ClCompile Include="Sources\InputManager.cpp" />
-=======
     <ClCompile Include="Sources\Screen.cpp" />
     <ClCompile Include="Sources\Input.cpp" />
     <ClCompile Include="Sources\Object.cpp" />
->>>>>>> 1a4cd7823d8d660c76cafc6862702373118a2857
     <ClCompile Include="Sources\Main.cpp" />
     <ClCompile Include="Sources\Missile.cpp" />
     <ClCompile Include="Sources\Starship.cpp" />
+    <ClCompile Include="Sources\StarshipAI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Screen.h" />
@@ -175,9 +172,7 @@
     <ClInclude Include="Sources\Missile.h" />
     <ClInclude Include="Sources\Starship.h" />
     <ClInclude Include="Sources\Vector2.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Sources\InputManager.h" />
+    <ClInclude Include="Sources\StarshipAI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

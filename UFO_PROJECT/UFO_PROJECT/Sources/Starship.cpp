@@ -94,7 +94,7 @@ void Starship::ShootMissile() {
         return;
     }
     else {
-        printf("총알이 발사되었습니다.\n");
+        //printf("총알이 발사되었습니다.\n");
     }
 
     missile->Shoot(position, rotation, 0.01f);

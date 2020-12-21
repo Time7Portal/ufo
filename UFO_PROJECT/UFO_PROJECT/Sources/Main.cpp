@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-#define PI 3.14159
-#define WINDOW_SIZE 600
-
-
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <chrono>
-#include <unordered_map>
-#include <GLFW/glfw3.h>
-#include <windows.h>
-#include "InputManager.h"
-
-
-
-// 현재 캐릭터의 위치, 크기 저장용
-double xPosCharacter = 0;
-double yPosCharacter = 0;
-double sizeC = 1;
-=======
 //#define PI 3.141592f
 //#define RADIAN ( PI / 180.0f )
 //#define DEGREE ( 180.0f / PI )
@@ -33,6 +12,7 @@ double sizeC = 1;
 
 #include "Vector2.h"
 #include "Starship.h"
+#include "StarshipAI.h"
 #include "Missile.h"
 #include "Input.h"
 #include "Screen.h"
@@ -47,13 +27,13 @@ static int height = 600;
 //static float vertical = 0;
 //static Vector2 mousePosition = Vector2(0, 0);
 //static Input input;
->>>>>>> 1a4cd7823d8d660c76cafc6862702373118a2857
 
 
 //static float speed = 0.01f;
 //static float missileSpeed = 0.05f;
 
 static Starship starship = Starship();
+static StarshipAI starshipAI = StarshipAI();
 //Missile missile;
 //Missile missiles[10];
 //static int missileCount = 0;
@@ -121,11 +101,7 @@ int main(void)
     }
 
     /* Create a windowed mode window and its OpenGL context */
-<<<<<<< HEAD
-    window = glfwCreateWindow(WINDOW_SIZE, WINDOW_SIZE, "Hello World", NULL, NULL);
-=======
     window = glfwCreateWindow(width, height, "Hello World", NULL, NULL);
->>>>>>> 1a4cd7823d8d660c76cafc6862702373118a2857
     if (!window)
     {
         glfwTerminate();
@@ -148,87 +124,20 @@ int main(void)
 
     starship.radius = 0.05f;
     starship.speed = 0.005f;
-
-
-
-    // 키보드와 마우스 처리를 위한 객체 생성
-    InputManager inputManager(window);
-
-
+    starshipAI.radius = 0.05f;
+    starshipAI.speed = 0.005f;
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
-<<<<<<< HEAD
-        // 유니티에서의 delta time 구하기 (이전 프레임으로부터의 기간)
-        std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
-        auto duration = now.time_since_epoch();
-        auto millis = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
-        //std::cout << millis << std::endl;
-
-
-        // 키 입력에 따른 이동
-        if (inputManager.Get_KeyPressedCheck(GLFW_KEY_D) == TRUE)
-        {
-            xPosCharacter += 0.05;
-        }
-        if (inputManager.Get_KeyPressedCheck(GLFW_KEY_A) == TRUE)
-        {
-            xPosCharacter -= 0.05;
-        }
-        if (inputManager.Get_KeyPressedCheck(GLFW_KEY_W) == TRUE)
-        {
-            yPosCharacter += 0.05;
-        }
-        if (inputManager.Get_KeyPressedCheck(GLFW_KEY_S) == TRUE)
-        {
-            yPosCharacter -= 0.05;
-        }
-        if (inputManager.Get_KeyPressedCheck(GLFW_KEY_E) == TRUE)
-        {
-            sizeC += 0.03;
-        }
-        if (inputManager.Get_KeyPressedCheck(GLFW_KEY_Q) == TRUE)
-        {
-            sizeC -= 0.03;
-        }
-
-        // 마우스 위치 출력 (테스트)
-        //std::cout << inputManager.Get_ReletiveMousePosX() << " / " << inputManager.Get_ReletiveMousePosY() << std::endl;
-
-
-        // 회전 속도 (값이 높을수록 느림)
-        long long speed = 10.0;
-        long long ticktock = millis / speed;
-=======
         system_clock::time_point start = system_clock::now();
         auto millisecond = duration_cast<milliseconds>(sec);
->>>>>>> 1a4cd7823d8d660c76cafc6862702373118a2857
 
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
-<<<<<<< HEAD
-
-        // 삼각형 그리기
-        glBegin(GL_TRIANGLES);      // Drawing Using Triangles
-        static double cost;         cost = cos(ticktock * PI / 180);
-        static double sint;         sint = sin(ticktock * PI / 180);
-
-        glVertex3f( (-sizeC * sint) + xPosCharacter,                    (+sizeC * cost) + yPosCharacter,                    0.0 ); // Top
-        glVertex3f( (-sizeC * cost + sizeC * sint) + xPosCharacter,     (-sizeC * sint - sizeC * cost) + yPosCharacter,     0.0 ); // Bottom Left
-        glVertex3f( (sizeC * cost + sizeC * sint) + xPosCharacter,      (sizeC * sint - sizeC * cost) + yPosCharacter,      0.0 ); // Bottom Right
-
-
-
-
-
-=======
         starship.Update();
->>>>>>> 1a4cd7823d8d660c76cafc6862702373118a2857
-
-        // Finished Drawing The Triangle
-        glEnd();
+        starshipAI.Update(starship); // 인공지능 갱신
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
@@ -245,5 +154,3 @@ int main(void)
     glfwTerminate();
     return 0;
 }
-
-

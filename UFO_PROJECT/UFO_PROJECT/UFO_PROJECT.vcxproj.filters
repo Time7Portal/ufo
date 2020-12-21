@@ -18,9 +18,6 @@
     <ClCompile Include="Sources\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="Sources\InputManager.cpp">
-=======
     <ClCompile Include="Sources\Starship.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -34,14 +31,13 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Screen.cpp">
->>>>>>> 1a4cd7823d8d660c76cafc6862702373118a2857
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\StarshipAI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <ClInclude Include="Sources\InputManager.h">
-=======
     <ClInclude Include="Sources\Vector2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -58,7 +54,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Screen.h">
->>>>>>> 1a4cd7823d8d660c76cafc6862702373118a2857
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\StarshipAI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
