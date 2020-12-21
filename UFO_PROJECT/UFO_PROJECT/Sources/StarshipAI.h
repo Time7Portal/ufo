@@ -8,7 +8,7 @@ public:
     Vector2 position = Vector2();
     Vector2 rotation = Vector2(1, 0);
     float radius = 0.1f;
-    float speed = 0.1f;
+    float speed = 0.001f;
 
     int missileCount = 10;
     Missile missiles[10];
@@ -16,16 +16,31 @@ public:
     bool canShoot = true;
     float reload = 4.0f;
 
-
+    float checkLeftRightTime = 2.0f;
+    float checkLeftRightTimeMax = 2.0f;
+    Vector2 moveDirection = Vector2();
 
     void Update(Starship &starship)
     {
         // 상대 우주선을 향해 회전
         rotation = (starship.position - this->position).Normalize();
 
+        if (checkLeftRightTime <= 0) {
+            checkLeftRightTime = checkLeftRightTimeMax;
+
+            float degree = DEG2RAD(rand() * 90);
+            // make left right vector
+            moveDirection = Vector2(
+                rotation.x * cos(degree) - rotation.y * sin(degree),
+                rotation.x * sin(degree) + rotation.y * cos(degree)
+            );
+        }
+        else {
+            checkLeftRightTime -= 0.3f;
+        }
+
         // 랜덤하게 방향 틀기
-        this->position.x = this->position.x + (((float)rand() / RAND_MAX) - 0.5f) / 32;
-        this->position.y = this->position.y + (((float)rand() / RAND_MAX) - 0.5f) / 32;
+        position = position + moveDirection * speed;
 
         // 미사일은 무조건 쏘고봄
         ShootMissile();
@@ -43,8 +58,6 @@ public:
 
         Render();
     }
-
-
 
     void GetVertexes(Vector2* vertexes) {
         //printf("------------------\n");

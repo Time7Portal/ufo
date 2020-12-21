@@ -63,7 +63,6 @@ void Starship::Update() {
     if (Input::GetKeyDown(GLFW_KEY_SPACE)) {
         ShootMissile();
     }
-    printf("reloadTime: %f\n", reload);
     if (reload <= 0) {
         canShoot = true;
     }

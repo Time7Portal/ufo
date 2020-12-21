@@ -124,6 +124,7 @@ int main(void)
 
     starship.radius = 0.05f;
     starship.speed = 0.005f;
+    starship.position = Vector2(-0.4f, 0.0f);
     starshipAI.radius = 0.05f;
     starshipAI.speed = 0.005f;
 
