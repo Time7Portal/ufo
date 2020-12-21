@@ -1,2 +1,12 @@
+<<<<<<< HEAD
 ﻿  InputManager.cpp
   UFO_PROJECT.vcxproj -> D:\Downloads\Program Sources\ufo\UFO_PROJECT\Win32\Debug\UFO_PROJECT.exe
+=======
+﻿  Starship.cpp
+C:\Users\dhfla\Desktop\ufo\UFO_PROJECT\UFO_PROJECT\Sources\Starship.cpp(27,19): warning C4244: '초기화 중': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\dhfla\Desktop\ufo\UFO_PROJECT\UFO_PROJECT\Sources\Starship.cpp(61,74): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\dhfla\Desktop\ufo\UFO_PROJECT\UFO_PROJECT\Sources\Starship.cpp(61,54): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\dhfla\Desktop\ufo\UFO_PROJECT\UFO_PROJECT\Sources\Starship.cpp(61,134): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\dhfla\Desktop\ufo\UFO_PROJECT\UFO_PROJECT\Sources\Starship.cpp(61,114): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  UFO_PROJECT.vcxproj -> C:\Users\dhfla\Desktop\ufo\UFO_PROJECT\Win32\Debug\UFO_PROJECT.exe
+>>>>>>> 1a4cd7823d8d660c76cafc6862702373118a2857
