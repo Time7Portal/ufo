@@ -157,7 +157,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Screen.cpp" />
+    <ClCompile Include="Sources\Input.cpp" />
+    <ClCompile Include="Sources\Object.cpp" />
     <ClCompile Include="Sources\Main.cpp" />
+    <ClCompile Include="Sources\Missile.cpp" />
+    <ClCompile Include="Sources\Starship.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sources\Screen.h" />
+    <ClInclude Include="Sources\Input.h" />
+    <ClInclude Include="Sources\Object.h" />
+    <ClInclude Include="Sources\Missile.h" />
+    <ClInclude Include="Sources\Starship.h" />
+    <ClInclude Include="Sources\Vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
